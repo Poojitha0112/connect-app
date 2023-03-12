@@ -27,7 +27,7 @@ SECRET_KEY = 'h6__pz5m$yk#s2l93$c6ux=%!r1hm%3h%5-^$pb9wzv5^gp*@3'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel.app', '.now.sh','127.0.0.1']
+ALLOWED_HOSTS = ['.vercel.app', '.now.sh','127.0.0.1',]
 
 
 # Application definition
@@ -79,14 +79,14 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-   # 'default': {
-    #    'ENGINE': 'django.db.backends.sqlite3',
-     #   'NAME': BASE_DIR / 'db.sqlite3',
-   # }
+    #'default': {
+      #  'ENGINE': 'django.db.backends.sqlite3',
+      #  'NAME': BASE_DIR / 'db.sqlite3',
+    #}
 }
-db_from_env = dj_database_url.config()
-DATABASES['default'].update(db_from_env)
-DATABASES['default']['CONN_MAX_AGE'] = 500
+#db_from_env = dj_database_url.config()
+#DATABASES['default'].update(db_from_env)
+#DATABASES['default']['CONN_MAX_AGE'] = 500
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -125,8 +125,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+
+STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
 
 
 ASGI_APPLICATION = "core.routing.application"
